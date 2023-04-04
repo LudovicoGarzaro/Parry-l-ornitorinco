@@ -9,29 +9,42 @@ public class PlayerMovement : MonoBehaviour
     public Transform cam;
 
     public float speed = 6f;
-    public float time = 2f;
+    public float defaultTime = 2f;
+    public float time;
 
     public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
+    public float turnSmoothVelocity;
 
     public Transform player;
     public Vector3 rotateAmount;
     public bool isStop;
+    public bool isParrying;
 
-    private void Start()
+    
+    
+
+    public void Start()
     {
         isStop = true;
+
+        
+
+        
     }
 
                  
 
     void Update()
     {
+        bool parry = Input.GetKeyDown(KeyCode.Space);
+
+        
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-         
+        
 
         if (direction.magnitude >= 0.1f)
         {
@@ -44,7 +57,9 @@ public class PlayerMovement : MonoBehaviour
 
             isStop = false;
 
-            time = 2f;
+            isParrying = false;
+
+            time = defaultTime;
             
         }
         else
@@ -53,30 +68,30 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (parry && isStop == true)
         {
-
-            Parry();
+            isParrying = true;
+            
 
         }
 
+        if (isStop == true && time > 0f && isParrying == true)
+        {
+            player.Rotate(rotateAmount * Time.deltaTime);
+            time -= Time.deltaTime;
+            
+        }
 
-
+        if(time < 0f)
+        {
+            isParrying = false;
+            time = defaultTime;
+        }
     }
 
    
 
 
-    public void Parry()
-    {
-        if (isStop == true && time > 0f)
-        {
-            player.Rotate(rotateAmount * Time.deltaTime);
-            time -= Time.deltaTime;
-        }
-
-
-    }
 
     
 }
