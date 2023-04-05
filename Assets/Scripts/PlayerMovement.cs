@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 rotateAmount;
     public bool isStop;
     public bool isParrying;
-
+    public GameObject codacollider;
     
     
 
@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isStop = true;
 
-        
 
+        codacollider.SetActive(false);
         
     }
 
@@ -60,7 +60,8 @@ public class PlayerMovement : MonoBehaviour
             isParrying = false;
 
             time = defaultTime;
-            
+
+            codacollider.SetActive(false);
         }
         else
         {
@@ -79,13 +80,14 @@ public class PlayerMovement : MonoBehaviour
         {
             player.Rotate(rotateAmount * Time.deltaTime);
             time -= Time.deltaTime;
-            
+            codacollider.SetActive(true);
         }
 
         if(time < 0f)
         {
             isParrying = false;
             time = defaultTime;
+            codacollider.SetActive(false);
         }
     }
 
