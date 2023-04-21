@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isStop;
     public bool isParrying;
     public GameObject codacollider;
+    public AudioSource parryaudio;
     
     
 
@@ -72,8 +74,8 @@ public class PlayerMovement : MonoBehaviour
         if (parry && isStop == true)
         {
             isParrying = true;
-            
 
+            parryaudio.Play();
         }
 
         if (isStop == true && time > 0f && isParrying == true)
@@ -81,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
             player.Rotate(rotateAmount * Time.deltaTime);
             time -= Time.deltaTime;
             codacollider.SetActive(true);
+            
         }
 
         if(time < 0f)

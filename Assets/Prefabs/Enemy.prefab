@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 831952325449083653}
   - component: {fileID: 831952325449083652}
   - component: {fileID: 831952325449083651}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,8 +147,8 @@ MonoBehaviour:
   walkPointRange: 140.04
   timeBetweenAttacks: 2
   projectile: {fileID: 7718263574757918348, guid: 31a881b3be481414d85b304372795a03, type: 3}
-  sightRange: 24
-  attackRange: 12
+  sightRange: 10
+  attackRange: 6
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &831952325482089430
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 831952325482089431}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 831952323692277900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'SparoRiflesso (Missing Prefab with guid: 28f5e94baecf5f446afe27784ef67f16)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}

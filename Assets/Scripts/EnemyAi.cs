@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class EnemyAi : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class EnemyAi : MonoBehaviour
 
     public LayerMask Ground, Player;
 
+    public AudioSource  trigger1;
+
+    public AudioSource trigger2;
     
 
     //Patroling
@@ -32,6 +36,7 @@ public class EnemyAi : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        trigger1.Play();
     }
 
     private void Update()
@@ -43,6 +48,8 @@ public class EnemyAi : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+
+        
     }
 
     private void Patroling()
@@ -73,12 +80,17 @@ public class EnemyAi : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+
+        
     }
 
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
+        
+
         agent.SetDestination(transform.position);
+
+        
 
         transform.LookAt(player);
 
@@ -92,6 +104,8 @@ public class EnemyAi : MonoBehaviour
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+
+            trigger2.Play();
         }
     }
     private void ResetAttack()

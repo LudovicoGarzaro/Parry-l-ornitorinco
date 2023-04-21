@@ -5,6 +5,7 @@ using UnityEngine;
 public class Colpo : MonoBehaviour
 {
     public Rigidbody rgBullet;
+    public GameObject player;
 
     private Vector3 lastVelocity;
     private float curSpeed;
@@ -29,7 +30,18 @@ public class Colpo : MonoBehaviour
         {
             Destroy(gameObject);
         }
-       
 
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (collision.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth playerlifeComponent))
+            {
+                playerlifeComponent.TakeDamagePlayer(1);
+            }
+        }
     }
 }
