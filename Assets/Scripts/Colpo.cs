@@ -38,10 +38,7 @@ public class Colpo : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth playerlifeComponent))
-            {
-                playerlifeComponent.TakeDamagePlayer(1);
-            }
+            Destroy(gameObject);
         }
     }
 }

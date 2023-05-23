@@ -13,9 +13,7 @@ public class EnemyAi : MonoBehaviour
 
     public LayerMask Ground, Player;
 
-    public AudioSource  trigger1;
-
-    public AudioSource trigger2;
+    
     
 
     //Patroling
@@ -36,7 +34,7 @@ public class EnemyAi : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        trigger1.Play();
+        
     }
 
     private void Update()
@@ -105,7 +103,7 @@ public class EnemyAi : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
 
-            trigger2.Play();
+           
         }
     }
     private void ResetAttack()

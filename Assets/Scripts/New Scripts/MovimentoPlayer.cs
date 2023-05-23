@@ -13,13 +13,38 @@ public class MovimentoPlayer : MonoBehaviour
     Vector3 moveVelocity;
     Vector3 turnVelocity;
 
+    public float defaultTime = 2f;
+    public float time;
+
+    public float turnSmoothTime = 0.1f;
+    public float turnSmoothVelocity;
+
+    public Transform player;
+    public Vector3 rotateAmount;
+    public bool isStop;
+    public bool isParrying;
+    public GameObject codacollider;
+    
+
+
     private void Awake()
     {
         characterController = GetComponent < CharacterController>();
     }
 
+    public void Start()
+    {
+        isStop = true;
+
+
+        codacollider.SetActive(false);
+
+    }
+
     private void Update()
     {
+        bool parry = Input.GetKeyDown(KeyCode.Space);
+
         var hInput = Input.GetAxis("Horizontal");
         var vInput = Input.GetAxis("Vertical");
 
@@ -28,7 +53,53 @@ public class MovimentoPlayer : MonoBehaviour
             moveVelocity = transform.forward * speed * vInput;
             turnVelocity = transform.up * rotationSpeed * hInput;
 
+            
+
         }
+        
+        if(characterController.Move(moveVelocity * Time.deltaTime) == 0 && turnVelocity == Vector3.zero)
+        {
+
+            isStop = true;
+
+        }
+        else
+        {
+            isStop = true;
+
+            isStop = false;
+
+            isParrying = false;
+
+            time = defaultTime;
+
+            codacollider.SetActive(false);
+
+        }
+
+    
+        
+
+        if (parry && isStop == true)
+        {
+            isParrying = true;
+        }
+
+        if (isStop == true && time > 0f && isParrying == true)
+        {
+            player.Rotate(rotateAmount * Time.deltaTime);
+            time -= Time.deltaTime;
+            codacollider.SetActive(true);
+
+        }
+
+        if (time < 0f)
+        {
+            isParrying = false;
+            time = defaultTime;
+            codacollider.SetActive(false);
+        }
+
 
         moveVelocity.y += gravity * Time.deltaTime;
         characterController.Move(moveVelocity * Time.deltaTime);
