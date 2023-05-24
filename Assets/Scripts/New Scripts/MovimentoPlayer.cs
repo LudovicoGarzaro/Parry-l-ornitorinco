@@ -24,7 +24,11 @@ public class MovimentoPlayer : MonoBehaviour
     public bool isStop;
     public bool isParrying;
     public GameObject codacollider;
-    
+
+    public float defaultColdown = 3f;
+    public float coldown;
+    bool isOnColdown = false;
+    bool coldownActive = false;
 
 
     private void Awake()
@@ -57,7 +61,7 @@ public class MovimentoPlayer : MonoBehaviour
 
         }
         
-        if(characterController.Move(moveVelocity * Time.deltaTime) == 0 && turnVelocity == Vector3.zero)
+        if(hInput == 0 && vInput == 0)
         {
 
             isStop = true;
@@ -80,9 +84,10 @@ public class MovimentoPlayer : MonoBehaviour
     
         
 
-        if (parry && isStop == true)
+        if (parry && isStop == true && coldownActive == false)
         {
             isParrying = true;
+            coldownActive = true;
         }
 
         if (isStop == true && time > 0f && isParrying == true)
@@ -98,8 +103,25 @@ public class MovimentoPlayer : MonoBehaviour
             isParrying = false;
             time = defaultTime;
             codacollider.SetActive(false);
+            isOnColdown = true;
         }
 
+        if (isOnColdown)
+        {
+
+            
+            coldown -= Time.deltaTime;
+
+            
+            
+
+            if(coldown <= 0f)
+            {
+                isOnColdown = false;
+                coldown = defaultColdown;
+                coldownActive = false;
+            }
+        }
 
         moveVelocity.y += gravity * Time.deltaTime;
         characterController.Move(moveVelocity * Time.deltaTime);
