@@ -6,20 +6,27 @@ public class Cambiocolore : MonoBehaviour
 {
 
 
-    public List<GameObject> muriesoffitto;
+    public GameObject muro;
+    public GameObject soffitto;
+    public GameObject muroTrasparente;
+    public GameObject soffittoTrasparente;
 
-    Collider trigger;
+    public Collider trigger;
 
-    private void Awake()
+    private void Start()
     {
-        trigger = GetComponent<BoxCollider>();
+        muroTrasparente.SetActive(false);
+        soffittoTrasparente.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (trigger.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            muriesoffitto.Clear();
+            muro.SetActive(false);
+            soffitto.SetActive(false);
+            muroTrasparente.SetActive(true);
+            soffittoTrasparente.SetActive(true);
         }
     }
 }
