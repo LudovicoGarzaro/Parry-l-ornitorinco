@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: "Assets/Scenes/Men\xF9 Principale.unity"
     guid: 8c67fe9bf3d015449a1789cd1f0e41e3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Livello 1.unity
     guid: a5ba47a7144d69e468aedaa4b146da51
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Livello 2.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Fine.unity
     guid: 8f66e2985d7a64045ae7c73adfacf22e
+  - enabled: 1
+    path: Assets/Scenes/levelDesign.unity
+    guid: 80c018c736a5bb045857483f6ac6c84f
   m_configObjects: {}
