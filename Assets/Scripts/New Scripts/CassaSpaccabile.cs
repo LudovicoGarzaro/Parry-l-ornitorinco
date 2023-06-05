@@ -13,4 +13,6 @@ public class CassaSpaccabile : MonoBehaviour
             cassa.SetActive(false);
         }
     }
+
+
 }

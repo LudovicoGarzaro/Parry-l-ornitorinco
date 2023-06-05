@@ -69,7 +69,7 @@ public class MovimentoPlayer : MonoBehaviour
         }
         else
         {
-            isStop = true;
+            
 
             isStop = false;
 

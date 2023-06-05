@@ -6,6 +6,8 @@ using UnityEngine.Audio;
 public class EnemyAi : MonoBehaviour
 {
     public Transform enemyBulletSpawn;
+
+    public float bulletForce;
     
     public NavMeshAgent agent;
 
@@ -96,7 +98,7 @@ public class EnemyAi : MonoBehaviour
         {
             ///Attack code here
             Rigidbody rb = Instantiate(projectile, enemyBulletSpawn.position, enemyBulletSpawn.rotation).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 16f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
            
             ///End of attack code
 

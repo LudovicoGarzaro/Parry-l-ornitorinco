@@ -9,7 +9,7 @@ public class KeyBoss : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             bossdoorscollider.GetComponent<BoxCollider>().enabled = true;
             key.SetActive(false);

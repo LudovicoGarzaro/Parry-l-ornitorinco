@@ -17,7 +17,7 @@ public class PortaBoss : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             porta1aperta.SetActive(true);
             porta2aperta.SetActive(true);

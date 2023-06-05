@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+
 
 public class TriggerBossBattle : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class TriggerBossBattle : MonoBehaviour
 
     public GameObject livello;
 
+   
+
     private void Start()
     {
         colliderMuro.SetActive(false);
@@ -17,9 +22,19 @@ public class TriggerBossBattle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
         
-        colliderMuro.SetActive(true);
-        livello.SetActive(false);
+        
+        
+
+        
+
+        
+
     }
 
 }

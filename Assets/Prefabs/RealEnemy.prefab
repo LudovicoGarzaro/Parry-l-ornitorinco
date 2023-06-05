@@ -266,8 +266,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 2.5
+  m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBulletSpawn: {fileID: 7915136333438579651}
+  bulletForce: 4
   agent: {fileID: 7915136334884338132}
   player: {fileID: 0}
   Ground:
@@ -303,7 +304,7 @@ MonoBehaviour:
   walkPointRange: 150
   timeBetweenAttacks: 2
   projectile: {fileID: 7718263574757918348, guid: 31a881b3be481414d85b304372795a03, type: 3}
-  sightRange: 20
-  attackRange: 10
+  sightRange: 6
+  attackRange: 4
   playerInSightRange: 0
   playerInAttackRange: 0

@@ -18,6 +18,6 @@ public class StartMenu : MonoBehaviour
 
     public void RePlay()
     {
-        SceneManager.LoadScene("Livello 1");
+        SceneManager.LoadScene("Menù Principale");
     }
 }

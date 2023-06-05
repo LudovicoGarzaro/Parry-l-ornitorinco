@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class CassaMinigioco : MonoBehaviour
 {
-    public GameObject enemyOrkey;
+    
+    public GameObject spawnRef;
     public GameObject cassa;
 
-    void Start()
+    private void Start()
     {
-        enemyOrkey.SetActive(false);
+        spawnRef.SetActive(false);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             cassa.SetActive(false);
-            enemyOrkey.SetActive(true);
+
+            spawnRef.SetActive(true);
         }
+
     }
+
 
 }
