@@ -10,6 +10,7 @@ public class Cambiocolore : MonoBehaviour
     public GameObject soffitto;
     public GameObject muroTrasparente;
     public GameObject soffittoTrasparente;
+    public GameObject elMascherado;
 
     public Collider trigger;
 
@@ -27,6 +28,7 @@ public class Cambiocolore : MonoBehaviour
             soffitto.SetActive(false);
             muroTrasparente.SetActive(true);
             soffittoTrasparente.SetActive(true);
+            elMascherado.SetActive(false);
         }
     }
 }
